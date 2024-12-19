@@ -31,6 +31,7 @@ const Slider: React.FC = () => {
     // Reset position to center
     setPosition(maxPosition / 2);
     setOrbImage('/StaticAssets/orange_button.png'); // Reset to orange orb
+    setTrackColor('bg-gray-500'); // Reset track color to default
   };
 
   const updateOrbImage = (pos: number) => {
