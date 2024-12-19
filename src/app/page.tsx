@@ -62,25 +62,25 @@ const Slider: React.FC = () => {
     if (position < maxPosition / 2) {
       // Left (Red)
       return (
-        <>
+        <div className="flex items-center space-x-2">
           <Image src="/StaticAssets/red_close.png" alt="Close" width={30} height={30} />
           <span className="text-red-600">Decline</span>
           <Image src="/StaticAssets/red_left_arrows.png" alt="Left Arrow" width={30} height={30} />
-        </>
+        </div>
       );
     } else if (position > maxPosition / 2) {
       // Right (Green)
       return (
-        <>
+        <div className="flex items-center space-x-2">
           <Image src="/StaticAssets/green_close.png" alt="Close" width={30} height={30} />
           <span className="text-green-600">Decline</span>
           <Image src="/StaticAssets/green_left_arrows.png" alt="Left Arrow" width={30} height={30} />
-        </>
+        </div>
       );
     } else {
       // Neutral (Orange)
       return (
-        <>
+        <div className="flex items-center space-x-2">
           <Image src="/StaticAssets/white_close.png" alt="Close" width={30} height={30} />
           <span className="text-white">Decline</span>
           <Player
@@ -89,7 +89,7 @@ const Slider: React.FC = () => {
             src="AnimatedAssets/glowing_left_arrows.json" // Path to your Lottie animation
             style={{ width: '30px', height: '30px' }}
           />
-        </>
+        </div>
       );
     }
   };
@@ -98,25 +98,25 @@ const Slider: React.FC = () => {
     if (position < maxPosition / 2) {
       // Left (Red)
       return (
-        <>
+        <div className="flex items-center space-x-2">
 <Image src="/StaticAssets/red_right_arrows.png" alt="Right Arrow" width={30} height={30} />
 <span className="text-red-600">Accept</span>
 <Image src="/StaticAssets/red_check.png" alt="Check" width={30} height={30} />
-</>
+</div>
 );
 } else if (position > maxPosition / 2) {
 // Right (Green)
 return (
-<>
+<div className="flex items-center space-x-2">
 <Image src="/StaticAssets/green_right_arrows.png" alt="Right Arrow" width={30} height={30} />
 <span className="text-green-600">Accept</span>
 <Image src="/StaticAssets/green_check.png" alt="Check" width={30} height={30} />
-</>
+</div>
 );
 } else {
 // Neutral (Orange)
 return (
-<>
+<div className="flex items-center space-x-2">
 <Player
   autoplay
   loop
@@ -125,16 +125,16 @@ return (
 />
 <span className="text-white">Accept</span>
 <Image src="/StaticAssets/white_check.png" alt="Check" width={30} height={30} />
-</>
+</div>
 );
 }
 };
 
 return (
 <div className="flex items-center justify-center h-32">
-<div className={`relative w-72 h-2 ${trackColor}`} ref={sliderRef}>
+<div className={`relative w-72 h-8 rounded-md ${trackColor}`} ref={sliderRef}>
 <div
-className="absolute top-0 left-0 cursor-pointer transition-all duration-200"
+className="absolute top-1/2 transform -translate-y-1/2 left-0 cursor-pointer transition-all duration-200"
 style={{ left: position }}
 onMouseDown={handleMouseDown}
 >
