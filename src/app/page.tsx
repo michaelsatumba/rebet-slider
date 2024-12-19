@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Player } from '@lottiefiles/react-lottie-player';
+// import { Player } from '@lottiefiles/react-lottie-player';
 
 const Slider: React.FC = () => {
   const [position, setPosition] = useState(120); // Start at center
@@ -83,12 +83,12 @@ const Slider: React.FC = () => {
         <div className="flex items-center space-x-2">
           <Image src="/StaticAssets/white_close.png" alt="Close" width={30} height={30} />
           <span className="text-white">Decline</span>
-          <Player
+          {/* <Player
             autoplay
             loop
             src="AnimatedAssets/glowing_left_arrows.json" // Path to your Lottie animation
             style={{ width: '30px', height: '30px' }}
-          />
+          /> */}
         </div>
       );
     }
@@ -117,12 +117,12 @@ return (
 // Neutral (Orange)
 return (
 <div className="flex items-center space-x-2">
-<Player
+{/* <Player
   autoplay
   loop
   src="AnimatedAssets/glowing_right_arrows.json" // Path to your Lottie animation
   style={{ width: '30px', height: '30px' }}
-/>
+/> */}
 <span className="text-white">Accept</span>
 <Image src="/StaticAssets/white_check.png" alt="Check" width={30} height={30} />
 </div>
