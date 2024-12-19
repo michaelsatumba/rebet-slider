@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const Slider: React.FC = () => {
   const [position, setPosition] = useState(120); // Start at center
@@ -55,7 +56,7 @@ const Slider: React.FC = () => {
       document.removeEventListener('mousemove', handleMouseMoveGlobal);
       document.removeEventListener('mouseup', handleMouseUpGlobal);
     };
-  }, [isDragging, handleMouseMove]);
+  }, [isDragging]);
 
   const renderLeftSideContent = () => {
     if (position < maxPosition / 2) {
@@ -82,62 +83,72 @@ const Slider: React.FC = () => {
         <>
           <Image src="/StaticAssets/white_close.png" alt="Close" width={30} height={30} />
           <span className="text-white">Decline</span>
-          <Image src="/StaticAssets/orange_left_arrows.png" alt="Left Arrow" width={30} height={30} />
+          <Player
+            autoplay
+            loop
+            src="AnimatedAssets/glowing_left_arrows.json" // Path to your Lottie animation
+            style={{ width: '30px', height: '30px' }}
+          />
         </>
       );
     }
   };
 
-const renderRightSideContent = () => {
+  const renderRightSideContent = () => {
     if (position < maxPosition / 2) {
       // Left (Red)
       return (
         <>
-          <Image src="/StaticAssets/red_right_arrows.png" alt="Right Arrow" width={30} height={30} />
-          <span className="text-red-600">Accept</span>
-          <Image src="/StaticAssets/red_check.png" alt="Check" width={30} height={30} />
-        </>
-      );
-    } else if (position > maxPosition / 2) {
-      // Right (Green)
-      return (
-        <>
-          <Image src="/StaticAssets/green_right_arrows.png" alt="Right Arrow" width={30} height={30} />
-          <span className="text-green-600">Accept</span>
-          <Image src="/StaticAssets/green_check.png" alt="Check" width={30} height={30} />
-        </>
-      );
-    } else {
-      // Neutral (Orange)
-      return (
-        <>
-          <Image src="/StaticAssets/orange_right_arrows.png" alt="Right Arrow" width={30} height={30} />
-          <span className="text-white">Accept</span>
-          <Image src="/StaticAssets/white_check.png" alt="Check" width={30} height={30} />
-        </>
-      );
-    }
-  };
+<Image src="/StaticAssets/red_right_arrows.png" alt="Right Arrow" width={30} height={30} />
+<span className="text-red-600">Accept</span>
+<Image src="/StaticAssets/red_check.png" alt="Check" width={30} height={30} />
+</>
+);
+} else if (position > maxPosition / 2) {
+// Right (Green)
+return (
+<>
+<Image src="/StaticAssets/green_right_arrows.png" alt="Right Arrow" width={30} height={30} />
+<span className="text-green-600">Accept</span>
+<Image src="/StaticAssets/green_check.png" alt="Check" width={30} height={30} />
+</>
+);
+} else {
+// Neutral (Orange)
+return (
+<>
+<Player
+  autoplay
+  loop
+  src="AnimatedAssets/glowing_right_arrows.json" // Path to your Lottie animation
+  style={{ width: '30px', height: '30px' }}
+/>
+<span className="text-white">Accept</span>
+<Image src="/StaticAssets/white_check.png" alt="Check" width={30} height={30} />
+</>
+);
+}
+};
 
-  return (
-    <div className="flex items-center justify-center h-32">
-      <div className={`relative w-72 h-2 ${trackColor}`} ref={sliderRef}>
-        <div
-          className="absolute top-0 left-0 cursor-pointer transition-all duration-200"
-          style={{ left: position }}
-          onMouseDown={handleMouseDown}
-        >
-          <Image src={orbImage} alt="Orb" width={50} height={50} /> {/* Orb size */}
-        </div>
-        <div className="absolute left-0 flex items-center space-x-2">
-          {renderLeftSideContent()}
-        </div>
-        <div className="absolute right-0 flex items-center space-x-2">
-          {renderRightSideContent()}
-        </div>
-      </div>
-    </div>
-  );
+return (
+<div className="flex items-center justify-center h-32">
+<div className={`relative w-72 h-2 ${trackColor}`} ref={sliderRef}>
+<div
+className="absolute top-0 left-0 cursor-pointer transition-all duration-200"
+style={{ left: position }}
+onMouseDown={handleMouseDown}
+>
+<Image src={orbImage} alt="Orb" width={50} height={50} />
+</div>
+<div className="absolute left-0 flex items-center space-x-2">
+{renderLeftSideContent()}
+</div>
+<div className="absolute right-0 flex items-center space-x-2">
+{renderRightSideContent()}
+</div>
+</div>
+</div>
+);
 };
 
 const Home: React.FC = () => {
