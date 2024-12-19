@@ -56,7 +56,7 @@ const Slider: React.FC = () => {
       document.removeEventListener('mousemove', handleMouseMoveGlobal);
       document.removeEventListener('mouseup', handleMouseUpGlobal);
     };
-  }, [isDragging]);
+  }, [isDragging, , handleMouseMove]);
 
   const renderLeftSideContent = () => {
     if (position < maxPosition / 2) {
