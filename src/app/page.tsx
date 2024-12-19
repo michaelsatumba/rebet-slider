@@ -11,7 +11,7 @@ const Slider: React.FC = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const maxPosition = 240; // Adjust based on your slider width
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = () => {
     setIsDragging(true);
   };
 
@@ -55,7 +55,7 @@ const Slider: React.FC = () => {
       document.removeEventListener('mousemove', handleMouseMoveGlobal);
       document.removeEventListener('mouseup', handleMouseUpGlobal);
     };
-  }, [isDragging]);
+  }, [isDragging, handleMouseMove]);
 
   const renderLeftSideContent = () => {
     if (position < maxPosition / 2) {
