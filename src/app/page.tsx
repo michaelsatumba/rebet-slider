@@ -130,9 +130,23 @@ return (
 }
 };
 
+const getBorderColorClass = (trackColor: string) => {
+  switch (trackColor) {
+    case 'bg-red-300':
+      return 'border-red-600';
+    case 'bg-green-300':
+      return 'border-green-600';
+    case 'bg-gray-500':
+      return 'border-orange-400';
+    // Add more cases as needed
+    default:
+      return 'border-orange-400'; // Default border color
+  }
+};
+
 return (
 <div className="flex items-center justify-center h-32">
-<div className={`relative w-72 h-8 rounded-md ${trackColor}`} ref={sliderRef}>
+<div className={`relative w-72 h-8 rounded-md ${trackColor}  ${getBorderColorClass(trackColor)} border-2`} ref={sliderRef}>
 <div
 className="absolute top-1/2 transform -translate-y-1/2 left-0 cursor-pointer transition-all duration-200"
 style={{ left: position }}
