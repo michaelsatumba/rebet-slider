@@ -196,11 +196,11 @@ const Home: React.FC = () => {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <Head>
         <title>Rebet Slider</title>
-        <meta name="description" content="P2P Slider Component" />
+        <meta name="description" content="Rebet Slider" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="text-2xl font-bold text-white">P2P Slider</h1>
+        <h1 className="text-2xl font-bold text-white">Rebet Slider</h1>
         <Slider />
       </main>
     </div>
