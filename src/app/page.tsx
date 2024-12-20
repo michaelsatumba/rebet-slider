@@ -9,6 +9,7 @@ const Slider: React.FC = () => {
   const [orbImage, setOrbImage] = useState('/StaticAssets/orange_button.png'); // Default orb image (orange)
   const [trackColor, setTrackColor] = useState('bg-gray-500');
   const [isDragging, setIsDragging] = useState(false);
+  const [isNeutral, setIsNeutral] = useState(true); // Track if the slider is neutral
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const maxPosition = 240; // Adjust based on your slider width
 
@@ -33,15 +34,18 @@ const Slider: React.FC = () => {
     setPosition(maxPosition / 2);
     setOrbImage('/StaticAssets/orange_button.png'); // Reset to orange orb
     setTrackColor('bg-gray-500'); // Reset track color to default
+    setIsNeutral(true);
   };
 
   const updateOrbImage = (pos: number) => {
     if (pos < maxPosition / 2) {
       setOrbImage('/StaticAssets/red_button.png'); // Change to red button when dragged left
       setTrackColor('bg-red-300');
+      setIsNeutral(false);
     } else {
       setOrbImage('/StaticAssets/green_button.png'); // Change to green button when dragged right
       setTrackColor('bg-green-300');
+      setIsNeutral(false);
     }
   };
 
@@ -152,7 +156,7 @@ className="absolute top-1/2 transform -translate-y-1/2 left-0 cursor-pointer tra
 style={{ left: position }}
 onMouseDown={handleMouseDown}
 >
-<Image src={orbImage} alt="Orb" width={50} height={50} />
+<Image src={orbImage} alt="Orb" width={50} height={50} className={isNeutral ? 'animate-pulse' : ''} />
 </div>
 <div className="absolute left-0 flex items-center space-x-2">
 {renderLeftSideContent()}
