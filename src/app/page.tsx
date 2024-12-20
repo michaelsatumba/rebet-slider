@@ -30,11 +30,33 @@ const Slider: React.FC = () => {
 
   const handleMouseUp = () => {
     setIsDragging(false);
+
     // Reset position to center
     setPosition(maxPosition / 2);
     setOrbImage('/StaticAssets/orange_button.png'); // Reset to orange orb
     setTrackColor('bg-gray-500'); // Reset track color to default
-    setIsNeutral(true);
+    setIsNeutral(true); // Set to neutral state
+
+    // Check the position to trigger actions
+    if (position <= 0) {
+      // Trigger action for left side
+      handleLeftAction();
+    } else if (position >= maxPosition) {
+      // Trigger action for right side
+      handleRightAction();
+    }
+  };
+
+  // Define the action for the left side
+  const handleLeftAction = () => {
+    console.log("Action triggered for left side!");
+    alert("You have declined!");
+  };
+
+  // Define the action for the right side
+  const handleRightAction = () => {
+    console.log("Action triggered for right side!");
+    alert("You have accepted!");
   };
 
   const updateOrbImage = (pos: number) => {
